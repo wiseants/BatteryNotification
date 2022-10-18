@@ -4,19 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BatteryNotification" ShowMinButton="False" ShowMaxRestoreButton="False" ResizeMode="NoResize"
+        xmlns:local="clr-namespace:BatteryNotification" ShowMinButton="False" ShowMaxRestoreButton="False" ResizeMode="NoResize" ShowCloseButton="False"
         mc:Ignorable="d"
-        Title="배터리 알림" Height="100" Width="320">
+        Title="배터리 알림" Height="140" Width="320">
     <Grid>
-        <StackPanel Margin="10" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="10" VerticalAlignment="Center">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150" />
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <mah:ToggleSwitch Grid.Column="0" OnContent="알림 사용" OffContent="알림 미사용" />
-                <mah:NumericUpDown Grid.Column="1" Minimum="1" Maximum="99" />
+                <mah:ToggleSwitch x:Name="togUse" Grid.Column="0" OnContent="알림 사용" OffContent="알림 미사용"
+                                  IsOn="{Binding Path=IsOn, UpdateSourceTrigger=PropertyChanged}"/>
+                <mah:NumericUpDown x:Name="txtMinPercent" Grid.Column="1" Minimum="1" Maximum="99"
+                                   Value="{Binding Path=MinPercent, UpdateSourceTrigger=PropertyChanged}"
+                                   IsEnabled="{Binding ElementName=togUse, Path=IsOn, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </StackPanel>
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+            <Button Content="닫기" Width="120"
+                    Command="{Binding Path=CloseCommand}"
+                    Style="{DynamicResource MahApps.Styles.Button.Square.Accent}" />
+        </WrapPanel>
     </Grid>
 </mah:MetroWindow>
