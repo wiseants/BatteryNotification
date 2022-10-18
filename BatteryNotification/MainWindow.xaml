@@ -4,10 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BatteryNotification"
+        xmlns:local="clr-namespace:BatteryNotification" ShowMinButton="False" ShowMaxRestoreButton="False" ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="배터리 알림" Height="100" Width="320">
     <Grid>
-
+        <StackPanel Margin="10" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <mah:ToggleSwitch Grid.Column="0" OnContent="알림 사용" OffContent="알림 미사용" />
+                <mah:NumericUpDown Grid.Column="1" Minimum="1" Maximum="99" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </mah:MetroWindow>
