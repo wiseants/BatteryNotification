@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace BatteryNotification
+namespace BatteryNotification.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+    public class ConfigViewModel : BindableBase
     {
         #region Fields
 
@@ -19,7 +19,7 @@ namespace BatteryNotification
 
         #region Constructors
 
-        public MainWindowViewModel()
+        public ConfigViewModel()
         {
             CloseCommand = new DelegateCommand(OnClose);
         }

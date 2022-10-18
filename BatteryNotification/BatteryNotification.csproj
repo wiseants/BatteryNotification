@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\battery.ico" />
     <None Remove="Icons\battery_16x16.png" />
     <None Remove="Icons\battery_20x20.png" />
     <None Remove="Icons\battery_24x24.png" />
@@ -16,11 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Icons\battery.ico" />
     <Resource Include="Icons\battery_16x16.png" />
     <Resource Include="Icons\battery_20x20.png" />
     <Resource Include="Icons\battery_24x24.png" />

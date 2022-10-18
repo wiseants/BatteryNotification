@@ -11,17 +11,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BatteryNotification
+namespace BatteryNotification.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ConfigView.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class ConfigView : MetroWindow
     {
-        public MainWindow()
+        public ConfigView()
         {
             InitializeComponent();
         }
