@@ -1,0 +1,13 @@
+*.obj
+*.user
+*.exe
+
+/.vs
+/packages
+/Msi/*.exe
+/Msi/*.pdb
+/CCA2 Installer/Release/*.exe
+/CCA2 Installer/Release/*.msi
+
+**/bin/
+**/obj/
