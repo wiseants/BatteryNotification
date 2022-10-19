@@ -2,17 +2,28 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BatteryNotification"
+             xmlns:tb="http://www.hardcodet.net/taskbar"
+             xmlns:viewModels="clr-namespace:BatteryNotification.ViewModels"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="NotifyIconResources.xaml" />
                 <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <!-- Theme setting -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <ContextMenu x:Shared="false" x:Key="SysTrayMenu">
+                <MenuItem x:Name="menConfig" Header="설정" Click="menConfig_Click" />
+                <Separator />
+                <MenuItem x:Name="menClose" Header="종료" Click="menClose_Click" />
+            </ContextMenu>
+            <tb:TaskbarIcon x:Key="NotifyIcon"
+                    IconSource="/Icons/battery.ico"
+                    ToolTipText="더블클릭시 설정창이 열립니다." TrayMouseDoubleClick="menConfig_Click"
+                    ContextMenu="{StaticResource SysTrayMenu}">
+            </tb:TaskbarIcon>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

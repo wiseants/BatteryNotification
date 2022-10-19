@@ -8,7 +8,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         ShowMinButton="False" ShowMaxRestoreButton="False" ResizeMode="NoResize" ShowCloseButton="False"
         xmlns:local="clr-namespace:BatteryNotification.Views"
-        mc:Ignorable="d"
+        mc:Ignorable="d" x:Name="wndConfig"
         Title="배터리 알림" Height="140" Width="320">
     <Grid>
         <Grid.RowDefinitions>
@@ -31,6 +31,7 @@
         <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
             <Button Content="닫기" Width="120"
                     Command="{Binding Path=CloseCommand}"
+                    CommandParameter="{Binding ElementName=wndConfig}"
                     Style="{DynamicResource MahApps.Styles.Button.Square.Accent}" />
         </WrapPanel>
     </Grid>

@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using BatteryNotification.Interfaces;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,17 @@ namespace BatteryNotification.Views
     /// <summary>
     /// Interaction logic for ConfigView.xaml
     /// </summary>
-    public partial class ConfigView : MetroWindow
+    public partial class ConfigView : MetroWindow, ICloseable
     {
         public ConfigView()
         {
             InitializeComponent();
+
+            DataContextChanged += ConfigView_DataContextChanged;
+        }
+
+        private void ConfigView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
         }
     }
 }

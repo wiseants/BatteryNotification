@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using BatteryNotification.Interfaces;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace BatteryNotification.ViewModels
 
         public ConfigViewModel()
         {
-            CloseCommand = new DelegateCommand(OnClose);
+            CloseCommand = new DelegateCommand<ICloseable>(OnClose);
         }
 
         #endregion
@@ -44,9 +45,9 @@ namespace BatteryNotification.ViewModels
 
         #region Event handlers
 
-        private void OnClose()
+        private void OnClose(ICloseable param)
         {
-
+            param.Close();
         }
 
         #endregion

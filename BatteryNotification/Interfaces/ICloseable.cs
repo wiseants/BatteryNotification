@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BatteryNotification.ViewModels
+namespace BatteryNotification.Interfaces
 {
-    public class NotifyIconViewModel
+    public interface ICloseable
     {
-        public NotifyIconViewModel()
-        {
-
-        }
+        void Close();
     }
 }
