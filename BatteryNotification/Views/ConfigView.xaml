@@ -28,7 +28,7 @@
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="10" VerticalAlignment="Center">
-            <TextBlock Text="남은 배터리 용량이 설정한 용량 이하로 떨어질 경우 알림이 발생합니다." 
+            <TextBlock Text="남은 배터리 용량(%)이 설정한 용량 이하로 떨어질 경우 알림이 발생합니다." 
                        Style="{StaticResource textBlockStyle}" />
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -60,11 +60,6 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="전화 : 82-031-891-0077  팩스 : 82-31-624-4930"
                        Style="{StaticResource textBlockStyle}" />
-                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">           
-                    <Hyperlink ToolTip="알림창을 엽니다." Command="{Binding Path=NoticeCommand}"> 
-                        알림
-                    </Hyperlink>
-                </TextBlock>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
