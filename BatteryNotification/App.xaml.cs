@@ -1,6 +1,8 @@
 ﻿using BatteryNotification.Views;
 using Hardcodet.Wpf.TaskbarNotification;
 using System.Windows;
+using System.Windows.Forms;
+using Application = System.Windows.Application;
 
 namespace BatteryNotification
 {

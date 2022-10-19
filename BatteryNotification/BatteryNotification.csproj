@@ -14,6 +14,7 @@
     <None Remove="Icons\battery_24x24.png" />
     <None Remove="Icons\battery_32x32.png" />
     <None Remove="Icons\battery_48x48.png" />
+    <None Remove="Images\logo_460x100.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,7 @@
     <Resource Include="Icons\battery_24x24.png" />
     <Resource Include="Icons\battery_32x32.png" />
     <Resource Include="Icons\battery_48x48.png" />
+    <Resource Include="Images\logo_460x100.png" />
   </ItemGroup>
 
 </Project>

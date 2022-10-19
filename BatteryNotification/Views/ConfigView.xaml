@@ -8,17 +8,32 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         ShowMinButton="False" ShowMaxRestoreButton="False" ResizeMode="NoResize" ShowCloseButton="False"
         xmlns:local="clr-namespace:BatteryNotification.Views"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d" x:Name="wndConfig"
-        Title="배터리 알림" Height="140" Width="320">
+        Title="배터리 알림" Height="420" Width="580">
+    <mah:MetroWindow.Resources>
+        <ResourceDictionary>
+            <Style x:Key="textBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="Margin" Value="5, 10" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+            </Style>
+        </ResourceDictionary>
+    </mah:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="10" VerticalAlignment="Center">
+            <TextBlock Text="남은 배터리 용량이 설정한 용량 이하로 떨어질 경우 알림이 발생합니다." 
+                       Style="{StaticResource textBlockStyle}" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="120" />
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <mah:ToggleSwitch x:Name="togUse" Grid.Column="0" OnContent="알림 사용" OffContent="알림 미사용"
@@ -28,11 +43,57 @@
                                    IsEnabled="{Binding ElementName=togUse, Path=IsOn, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </StackPanel>
-        <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-            <Button Content="닫기" Width="120"
+        <StackPanel Grid.Row="1" Margin="15">
+            <Label Background="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Label.Content>
+                    <Image Source="/Images/logo_460x100.png" Width="460" Height="100" />
+                </Label.Content>
+            </Label>
+            <TextBlock Text="(주)억세스위 경기도 수원시 권선구 산업로156번길 142-10(고색동) 수원벤처밸리A동 607호" 
+                       Style="{StaticResource textBlockStyle}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="전화 : 82-031-891-0077  팩스 : 82-31-624-4930"
+                       Style="{StaticResource textBlockStyle}" />
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">           
+                    <Hyperlink ToolTip="알림창을 엽니다." Command="{Binding Path=NoticeCommand}"> 
+                        알림
+                    </Hyperlink>
+                </TextBlock>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Margin="5, 10" VerticalAlignment="Center" HorizontalAlignment="Left">           
+                    <Hyperlink 
+                        ToolTip="Go to homepage."
+                        Command="{Binding CoderayLinkCommand}"
+                        CommandParameter="http://www.trinitysoft.co.kr"> 
+                        http://www.trinitysoft.co.kr
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock Grid.Column="1" Margin="5, 10" VerticalAlignment="Center" HorizontalAlignment="Right">           
+                    <Hyperlink 
+                        ToolTip="Third party notice."
+                        Command="{Binding OpenNoticeCommand}"> 
+                        Notice
+                    </Hyperlink>
+                </TextBlock>
+            </Grid>
+        </StackPanel>
+        <WrapPanel Grid.Row="2" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Right" 
+                   Margin="10 0 10 0">
+            <Button Content="닫기" ToolTip="현재 윈도우를 닫습니다." Margin="5" Width="100"
+                    Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}"
                     Command="{Binding Path=CloseCommand}"
-                    CommandParameter="{Binding ElementName=wndConfig}"
-                    Style="{DynamicResource MahApps.Styles.Button.Square.Accent}" />
+                    CommandParameter="{Binding ElementName=wndConfig}" />
         </WrapPanel>
     </Grid>
 </mah:MetroWindow>
