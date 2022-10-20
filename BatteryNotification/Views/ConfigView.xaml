@@ -38,7 +38,7 @@
                 </Grid.ColumnDefinitions>
                 <mah:ToggleSwitch x:Name="togUse" Grid.Column="0" OnContent="배터리 알림 사용" OffContent="배터리 알림 미사용"
                                   ToolTip="배터리 알림을 켜거나 끌 수 있습니다."
-                                  IsOn="{Binding Path=IsOn, UpdateSourceTrigger=PropertyChanged}"/>
+                                  IsOn="{Binding Path=IsUseNotice, UpdateSourceTrigger=PropertyChanged}"/>
                 <mah:NumericUpDown x:Name="txtMinPercent" Grid.Column="1" Minimum="1" Maximum="99"
                                    ToolTip="입력한 수치 이하로 배터리 용량이 남은 경우 알림이 발생합니다."
                                    Value="{Binding Path=MinPercent, UpdateSourceTrigger=PropertyChanged}"

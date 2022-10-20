@@ -15,11 +15,19 @@
     <None Remove="Icons\battery_32x32.png" />
     <None Remove="Icons\battery_48x48.png" />
     <None Remove="Images\logo_460x100.png" />
+    <None Remove="Notice.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Notice.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
 ﻿using BatteryNotification.Interfaces;
+using BatteryNotification.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -14,7 +15,9 @@ namespace BatteryNotification.ViewModels
     {
         #region Fields
 
-        private int _minPercent = 1;
+        private ConfigInfo _config;
+        private bool _isUseNotice;
+        private int _minPercent;
 
         #endregion
 
@@ -23,11 +26,24 @@ namespace BatteryNotification.ViewModels
         public ConfigViewModel()
         {
             CloseCommand = new DelegateCommand<ICloseable>(OnClose);
+
+            _config = ConfigInfo.Load();
+            if (_config != null)
+            {
+                IsUseNotice = _config.IsUseNotice;
+                MinPercent = _config.MinPercent;
+            }
         }
 
         #endregion
 
         #region Properties
+
+        public bool IsUseNotice
+        {
+            get => _isUseNotice;
+            set => _ = SetProperty(ref _isUseNotice, value);
+        }
 
         public int MinPercent
         {
@@ -47,6 +63,13 @@ namespace BatteryNotification.ViewModels
 
         private void OnClose(ICloseable param)
         {
+            if (_config != null)
+            {
+                _config.IsUseNotice = IsUseNotice;
+                _config.MinPercent = MinPercent;
+                _config.Save();
+            }
+
             param.Close();
         }
 
