@@ -19,11 +19,11 @@ using Application = System.Windows.Application;
 
 namespace BatteryNotification.ViewModels
 {
-    public class ConfigViewModel : BindableBase
+    public class MainViewModel : BindableBase
     {
         #region Fields
 
-        private ConfigInfo _config;
+        private ConfigInfo? _config = null;
         private bool _isUseNotice;
         private int _minPercent;
 
@@ -31,9 +31,9 @@ namespace BatteryNotification.ViewModels
 
         #region Constructors
 
-        public ConfigViewModel()
+        public MainViewModel()
         {
-            CloseCommand = new DelegateCommand<ICloseable>(OnClose);
+            CloseCommand = new DelegateCommand(OnClose);
 
             _config = ConfigInfo.Load();
             if (_config != null)
@@ -69,7 +69,7 @@ namespace BatteryNotification.ViewModels
 
         #region Event handlers
 
-        private void OnClose(ICloseable param)
+        private void OnClose()
         {
             if (_config != null)
             {
@@ -78,13 +78,19 @@ namespace BatteryNotification.ViewModels
                 _config.Save();
             }
 
-            param.Close();
+            Application.Current.MainWindow.Visibility = Visibility.Hidden;
 
             var a = Application.Current.Dispatcher;
             var b = Application.Current.MainWindow;
 
             Notifier notifier = new Notifier(cfg =>
             {
+                cfg.PositionProvider = new WindowPositionProvider(
+                    parentWindow: Application.Current.MainWindow,
+                    corner: Corner.TopRight,
+                    offsetX: 10,
+                    offsetY: 10);
+
                 cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
                     notificationLifetime: TimeSpan.FromSeconds(3),
                     maximumNotificationCount: MaximumNotificationCount.FromCount(5));

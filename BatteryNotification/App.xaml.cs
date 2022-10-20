@@ -25,7 +25,10 @@ namespace BatteryNotification
 
             _notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
 
-            Application.Current.MainWindow = new MainWindow();
+            Application.Current.MainWindow = new MainView()
+            {
+                Visibility = Visibility.Hidden
+            };
         }
 
         protected override void OnExit(ExitEventArgs e)
@@ -44,8 +47,8 @@ namespace BatteryNotification
 
         private void menConfig_Click(object sender, RoutedEventArgs e)
         {
-            ConfigView configView = new ConfigView();
-            configView.Show();
+            Application.Current.MainWindow.Show();
+            //Application.Current.MainWindow.Visibility = Visibility.Visible;
         }
 
         private void menClose_Click(object sender, RoutedEventArgs e)

@@ -19,9 +19,9 @@ namespace BatteryNotification.Views
     /// <summary>
     /// Interaction logic for ConfigView.xaml
     /// </summary>
-    public partial class ConfigView : MetroWindow, ICloseable
+    public partial class MainView : MetroWindow, ICloseable
     {
-        public ConfigView()
+        public MainView()
         {
             InitializeComponent();
 
