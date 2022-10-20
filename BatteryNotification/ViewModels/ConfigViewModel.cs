@@ -7,7 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
+using ToastNotifications;
+using ToastNotifications.Core;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
+using Application = System.Windows.Application;
 
 namespace BatteryNotification.ViewModels
 {
@@ -71,6 +79,20 @@ namespace BatteryNotification.ViewModels
             }
 
             param.Close();
+
+            var a = Application.Current.Dispatcher;
+            var b = Application.Current.MainWindow;
+
+            Notifier notifier = new Notifier(cfg =>
+            {
+                cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                    notificationLifetime: TimeSpan.FromSeconds(3),
+                    maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+                cfg.Dispatcher = Application.Current.Dispatcher;
+            });
+
+            notifier.ShowInformation("테스트");
         }
 
         #endregion

@@ -24,6 +24,8 @@ namespace BatteryNotification
             base.OnStartup(e);
 
             _notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
+
+            Application.Current.MainWindow = new MainWindow();
         }
 
         protected override void OnExit(ExitEventArgs e)
