@@ -5,15 +5,18 @@
     <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Company>ACCESS WE</Company>
+    <Copyright>ACCESS WE</Copyright>
+    <Product>BatteryNotification For ACCESS WE</Product>
+    <Authors>hcan</Authors>
+    <Title>BatteryNotification For ACCESS WE</Title>
+    <PackageIcon>battery_16x16.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Icons\battery.ico" />
-    <None Remove="Icons\battery_16x16.png" />
     <None Remove="Icons\battery_20x20.png" />
     <None Remove="Icons\battery_24x24.png" />
     <None Remove="Icons\battery_32x32.png" />
-    <None Remove="Icons\battery_48x48.png" />
     <None Remove="Images\logo_460x100.png" />
     <None Remove="Notice.md" />
   </ItemGroup>
@@ -33,13 +36,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Icons\battery.ico" />
-    <Resource Include="Icons\battery_16x16.png" />
-    <Resource Include="Icons\battery_20x20.png" />
-    <Resource Include="Icons\battery_24x24.png" />
-    <Resource Include="Icons\battery_32x32.png" />
-    <Resource Include="Icons\battery_48x48.png" />
+    <Resource Include="Icons\battery.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\battery_16x16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\battery_20x20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\battery_24x24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\battery_32x32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Icons\battery_48x48.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\logo_460x100.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Icons\battery.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Icons\battery_16x16.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Icons\battery_48x48.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

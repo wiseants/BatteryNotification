@@ -5,6 +5,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,8 +78,9 @@ namespace BatteryNotification.ViewModels
             Application.Current.MainWindow.Hide();
 
             new ToastContentBuilder()
-                .AddText("ACCESS WE")
+                .AddHeader("hcan", "ACCESS WE", "arg")
                 .AddText("배터리 충전이 필요합니다.")
+                .AddAppLogoOverride(new Uri(Path.GetFullPath(@"Icons\battery_48x48.png")), ToastGenericAppLogoCrop.Circle)
                 .Show();
         }
 
