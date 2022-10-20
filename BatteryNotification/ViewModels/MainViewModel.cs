@@ -1,5 +1,6 @@
 ﻿using BatteryNotification.Interfaces;
 using BatteryNotification.Models;
+using Microsoft.Toolkit.Uwp.Notifications;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -10,11 +11,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
-using ToastNotifications;
-using ToastNotifications.Core;
-using ToastNotifications.Lifetime;
-using ToastNotifications.Messages;
-using ToastNotifications.Position;
 using Application = System.Windows.Application;
 
 namespace BatteryNotification.ViewModels
@@ -78,27 +74,12 @@ namespace BatteryNotification.ViewModels
                 _config.Save();
             }
 
-            Application.Current.MainWindow.Visibility = Visibility.Hidden;
+            Application.Current.MainWindow.Hide();
 
-            var a = Application.Current.Dispatcher;
-            var b = Application.Current.MainWindow;
-
-            Notifier notifier = new Notifier(cfg =>
-            {
-                cfg.PositionProvider = new WindowPositionProvider(
-                    parentWindow: Application.Current.MainWindow,
-                    corner: Corner.TopRight,
-                    offsetX: 10,
-                    offsetY: 10);
-
-                cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                    notificationLifetime: TimeSpan.FromSeconds(3),
-                    maximumNotificationCount: MaximumNotificationCount.FromCount(5));
-
-                cfg.Dispatcher = Application.Current.Dispatcher;
-            });
-
-            notifier.ShowInformation("테스트");
+            new ToastContentBuilder()
+                .AddText("ACCESS WE")
+                .AddText("배터리 충전이 필요합니다.")
+                .Show();
         }
 
         #endregion
